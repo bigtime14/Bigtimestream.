@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#090820">
+<title>Paiement – Bigtimestream &amp; Gaming</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@500;600;700&family=Figtree:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  color-scheme:dark;
+  --bg:#090820;--bg2:#12103A;--bg3:#1C1850;
+  --line:rgba(255,255,255,.12);
+  --text:#F1EFFF;--muted:#B0AADF;
+  --violet:#5B3DF5;--grape:#9333EA;--cyan:#28E0F0;--pink:#FF3DA5;--sun:#FFD84D;
+  --display:'Chakra Petch',system-ui,sans-serif;
+  --body:'Figtree',system-ui,sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:var(--body);color:var(--text);line-height:1.6;font-size:17px;-webkit-font-smoothing:antialiased;
+  background:
+    radial-gradient(800px 480px at 90% -8%,rgba(123,92,255,.36),transparent 62%),
+    radial-gradient(640px 460px at -4% 10%,rgba(40,224,240,.14),transparent 62%),
+    var(--bg);
+  background-repeat:no-repeat;min-height:100vh}
+button{font:inherit;color:inherit;cursor:pointer;border:0;background:none}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--cyan);outline-offset:3px;border-radius:6px}
+.wrap{width:min(1080px,92vw);margin-inline:auto}
+
+header.top{background:rgba(9,8,32,.78);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
+header.top .wrap{display:flex;align-items:center;justify-content:space-between;height:70px;gap:16px}
+.logo{font-family:var(--display);font-weight:700;font-size:1.2rem;text-decoration:none;display:flex;align-items:center;gap:10px}
+.logo i{width:32px;height:32px;background:linear-gradient(135deg,#5B3DF5,#9333EA);display:grid;place-items:center;color:#fff;font-style:normal;font-weight:700;clip-path:polygon(0 0,70% 0,100% 30%,100% 100%,30% 100%,0 70%)}
+.logo span{color:var(--cyan)}
+.back{text-decoration:underline;font-weight:500;color:var(--muted)}
+.back:hover{color:var(--text)}
+
+h1{font-family:var(--display);font-weight:700;font-size:clamp(2rem,4vw,3rem);line-height:1.05;margin:44px 0 28px;text-shadow:0 0 44px rgba(123,92,255,.55)}
+.layout{display:grid;grid-template-columns:1.25fr 1fr;gap:32px;align-items:start;padding-bottom:80px}
+
+.panel{background:var(--bg2);border:1px solid var(--line);border-radius:22px;padding:28px}
+.panel + .panel{margin-top:20px}
+.panel h2{font-family:var(--display);font-size:1.25rem;margin-bottom:16px}
+.field{display:grid;gap:6px;margin-bottom:16px}
+.field label{font-weight:600;font-size:.95rem}
+.field input{padding:13px 14px;border:1px solid var(--line);border-radius:12px;font:inherit;width:100%;background:rgba(255,255,255,.06);color:var(--text)}
+.field input::placeholder{color:#8F89C6}
+.field input:focus{border-color:var(--cyan);outline:none;box-shadow:0 0 0 3px rgba(40,224,240,.2)}
+.field small{color:var(--muted);font-size:.85rem}
+.field.bad input{border-color:#FF7A6B}
+.err{color:#FF9A8E;font-size:.88rem;display:none}
+.field.bad .err{display:block}
+
+.methods{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.method{position:relative;text-align:left;border:1.5px solid var(--line);border-radius:16px;padding:16px;display:grid;gap:4px;background:rgba(255,255,255,.03);transition:border-color .15s,box-shadow .2s,background .15s}
+.method:hover{border-color:rgba(40,224,240,.6)}
+.method[aria-checked="true"]{border-color:var(--cyan);background:rgba(40,224,240,.08);box-shadow:0 0 30px -8px rgba(40,224,240,.55)}
+.method .badge{width:40px;height:40px;border-radius:12px;display:grid;place-items:center;font-family:var(--display);font-weight:700;color:#fff;font-size:1.05rem}
+.method strong{font-family:var(--display);font-size:1.1rem;margin-top:6px}
+.method span.s{font-size:.88rem;color:var(--muted)}
+.method .tick{position:absolute;top:14px;right:14px;width:22px;height:22px;border-radius:50%;border:1.5px solid var(--line);display:grid;place-items:center;font-size:.8rem;color:transparent}
+.method[aria-checked="true"] .tick{background:var(--cyan);border-color:var(--cyan);color:#06122A;font-weight:700}
+
+.pay-box{margin-top:18px;background:rgba(40,224,240,.08);border:1px solid rgba(40,224,240,.35);border-radius:16px;padding:20px;display:none}
+.pay-box.show{display:block}
+.pay-box ol{margin:10px 0 0 1.2em;display:grid;gap:8px}
+.kv{display:flex;justify-content:space-between;align-items:center;gap:12px;background:rgba(255,255,255,.06);border:1px solid var(--line);border-radius:12px;padding:10px 14px;margin-top:10px}
+.kv span{font-size:.9rem;color:var(--muted)}
+.kv strong{font-family:var(--display);font-size:1.15rem;word-break:break-all}
+.copy{font-size:.85rem;font-weight:600;background:var(--cyan);color:#06122A;padding:6px 14px;border-radius:999px;flex-shrink:0;transition:box-shadow .2s}
+.copy:hover{box-shadow:0 0 18px -2px rgba(40,224,240,.8)}
+.setup{background:rgba(255,216,77,.12);border:1px solid rgba(255,216,77,.4);color:#FFE58A;border-radius:12px;padding:12px 14px;font-size:.92rem;margin-top:12px}
+.setup[hidden],#payLink[hidden]{display:none}
+
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:15px 26px;border-radius:999px;font-weight:600;text-decoration:none;width:100%;transition:transform .15s,box-shadow .2s,border-color .2s}
+.btn:active{transform:scale(.98)}
+.btn-primary{background:linear-gradient(135deg,#5B3DF5,#9333EA);color:#fff}
+.btn-primary:hover{box-shadow:0 0 32px -4px rgba(147,51,234,.9)}
+.btn-ghost{border:1.5px solid rgba(255,255,255,.35);margin-top:10px}
+.btn-ghost:hover{border-color:var(--cyan);box-shadow:0 0 24px -6px rgba(40,224,240,.6)}
+.note{font-size:.88rem;color:var(--muted);margin-top:12px}
+
+.summary{position:sticky;top:20px}
+.row{display:flex;justify-content:space-between;gap:14px;padding:12px 0;border-bottom:1px solid var(--line)}
+.row small{display:block;color:var(--muted)}
+.row b{font-family:var(--display);white-space:nowrap}
+.total{display:flex;justify-content:space-between;font-family:var(--display);font-weight:700;font-size:1.55rem;padding-top:16px}
+.ref{margin-top:14px;font-size:.9rem;color:var(--muted)}
+.ref strong{color:var(--cyan);font-family:var(--display)}
+
+.empty,.done{text-align:center;padding:60px 20px;display:none}
+.empty h2,.done h2{font-family:var(--display);font-size:1.8rem;margin-bottom:10px}
+.empty p,.done p{max-width:30em;margin:0 auto 22px;color:var(--muted)}
+.empty .btn,.done .btn{width:auto}
+.check{width:64px;height:64px;border-radius:50%;background:rgba(40,224,240,.12);border:1.5px solid var(--cyan);color:var(--cyan);display:grid;place-items:center;margin:0 auto 18px;font-size:1.8rem;box-shadow:0 0 40px -6px rgba(40,224,240,.7)}
+
+.toast{position:fixed;left:50%;bottom:26px;transform:translate(-50%,20px);background:var(--text);color:#090820;padding:12px 22px;border-radius:999px;opacity:0;transition:all .25s;z-index:50;pointer-events:none;font-weight:600}
+.toast.show{opacity:1;transform:translate(-50%,0)}
+
+@media (max-width:860px){
+  .layout{grid-template-columns:1fr}
+  .summary{position:static;order:-1}
+  .methods{grid-template-columns:1fr}
+}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="wrap">
+    <a class="logo" href="index.html"><i>B</i>Bigtimestream <span>&amp; Gaming</span></a>
+    <a class="back" href="index.html">Retour à la boutique</a>
+  </div>
+</header>
+
+<main class="wrap">
+  <h1>Paiement</h1>
+
+  <div class="empty" id="empty">
+    <h2>Votre panier est vide</h2>
+    <p>Ajoutez une carte cadeau ou un accessoire, puis revenez ici pour payer.</p>
+    <a class="btn btn-primary" href="index.html">Voir la boutique</a>
+  </div>
+
+  <div class="done" id="done">
+    <div class="check">✓</div>
+    <h2>Commande envoyée</h2>
+    <p>Votre message est parti sur WhatsApp. Nous vérifions votre paiement, puis nous vous envoyons le code de votre carte dans la même conversation.</p>
+    <p>Référence de commande : <strong id="doneRef"></strong></p>
+    <a class="btn btn-primary" href="index.html">Retour à la boutique</a>
+  </div>
+
+  <div class="layout" id="layout">
+    <div>
+      <div class="panel">
+        <h2>Vos coordonnées</h2>
+        <div class="field" id="f-name">
+          <label for="name">Nom complet</label>
+          <input id="name" autocomplete="name" placeholder="Prénom et nom">
+          <span class="err">Entrez votre nom.</span>
+        </div>
+        <div class="field" id="f-phone">
+          <label for="phone">Votre numéro WhatsApp</label>
+          <input id="phone" type="tel" autocomplete="tel" placeholder="+509 ...">
+          <small>C'est ici que nous vous envoyons le code.</small>
+          <span class="err">Entrez un numéro valide, avec l'indicatif du pays.</span>
+        </div>
+        <div class="field" id="f-email">
+          <label for="email">E-mail (facultatif)</label>
+          <input id="email" type="email" autocomplete="email" placeholder="vous@exemple.com">
+          <span class="err">Cette adresse e-mail n'est pas valide.</span>
+        </div>
+      </div>
+
+      <div class="panel">
+        <h2>Mode de paiement</h2>
+        <div class="methods" role="radiogroup" aria-label="Mode de paiement">
+          <button type="button" class="method" role="radio" aria-checked="false" data-m="moncash">
+            <span class="tick">✓</span>
+            <span class="badge" style="background:#E5372F">M</span>
+            <strong>MonCash</strong>
+            <span class="s">Digicel</span>
+          </button>
+          <button type="button" class="method" role="radio" aria-checked="false" data-m="natcash">
+            <span class="tick">✓</span>
+            <span class="badge" style="background:#E8830C">N</span>
+            <strong>NatCash</strong>
+            <span class="s">Natcom</span>
+          </button>
+        </div>
+        <div class="field bad" id="f-method" style="display:none;margin:12px 0 0"><span class="err">Choisissez MonCash ou NatCash.</span></div>
+
+        <div class="pay-box" id="payBox" aria-live="polite">
+          <strong id="payTitle" style="font-family:var(--display);font-size:1.1rem"></strong>
+          <ol>
+            <li>Ouvrez <span id="appName"></span> sur votre téléphone.</li>
+            <li>Envoyez exactement le montant ci-dessous au numéro indiqué.</li>
+            <li>Notez la référence de commande dans le message du transfert, si l'application le permet.</li>
+            <li>Copiez le numéro de transaction reçu, puis collez-le plus bas.</li>
+          </ol>
+          <div class="kv"><div><span>Montant à envoyer</span><br><strong id="payAmount"></strong></div><button type="button" class="copy" data-copy="amount">Copier</button></div>
+          <div class="kv"><div><span>Numéro du destinataire</span><br><strong id="payNumber"></strong></div><button type="button" class="copy" data-copy="number">Copier</button></div>
+          <div class="kv"><div><span>Référence</span><br><strong id="payRef"></strong></div><button type="button" class="copy" data-copy="ref">Copier</button></div>
+          <div class="setup" id="setupMsg" hidden></div>
+          <a class="btn btn-ghost" id="payLink" href="#" target="_blank" rel="noopener" hidden>Ouvrir le lien de paiement</a>
+        </div>
+      </div>
+
+      <div class="panel">
+        <h2>Confirmation</h2>
+        <div class="field" id="f-tx">
+          <label for="tx">Numéro de transaction</label>
+          <input id="tx" autocomplete="off" placeholder="Ex : 1234567890">
+          <small>Vous le trouvez dans le SMS ou dans l'historique de l'application, après le transfert.</small>
+          <span class="err">Entrez le numéro de transaction reçu après votre paiement.</span>
+        </div>
+        <button type="button" class="btn btn-primary" id="confirm">Confirmer et envoyer sur WhatsApp</button>
+        <p class="note">Nous vérifions chaque paiement à la main. Le code de votre carte est envoyé dès que le transfert est confirmé.</p>
+      </div>
+    </div>
+
+    <aside class="panel summary" aria-label="Récapitulatif">
+      <h2>Votre commande</h2>
+      <div id="lines"></div>
+      <div class="row"><div>Sous-total</div><b id="sub"></b></div>
+      <div class="row"><div>Frais de service</div><b id="fee"></b></div>
+      <div class="total"><span>Total</span><span id="total"></span></div>
+      <p class="ref">Référence : <strong id="ref"></strong></p>
+      <p class="ref"><a href="index.html">Modifier le panier</a></p>
+    </aside>
+  </div>
+</main>
+
+<div class="toast" id="toast" role="status"></div>
+
+<script>
+/* ===== À MODIFIER (mêmes valeurs que dans index.html) ===== */
+const CONFIG = {
+  whatsapp: "50944089302",         // Votre numéro WhatsApp avec indicatif, sans + ni espaces. Ex : "50937001234"
+  moncashNumber: "44089302",    // Numéro MonCash qui reçoit l'argent
+  natcashNumber: "40313942",    // Numéro NatCash qui reçoit l'argent
+  moncashLink: "",      // Lien de paiement MonCash (facultatif)
+  natcashLink: "",      // Lien de paiement NatCash (facultatif)
+  serviceFee: 3,        // Frais de service ajoutés à chaque commande (même valeur que dans index.html)
+  currency: "$"         // Devise affichée. Ex : "HTG"
+};
+
+const $ = s => document.querySelector(s);
+const money = n => n + " " + CONFIG.currency;
+
+/* Panier reçu depuis la boutique : checkout.html?c=[["Nom",prix,quantité],...] */
+let cart = [];
+try{
+  const raw = new URLSearchParams(location.search).get("c");
+  cart = JSON.parse(raw || "[]")
+    .map(([name,price,qty])=>({name:String(name).slice(0,80), price:Number(price), qty:Math.max(1,parseInt(qty,10)||1)}))
+    .filter(x=>x.price>0);
+}catch(e){ cart = []; }
+
+const subtotal = cart.reduce((s,x)=>s+x.price*x.qty,0);
+const fee = cart.length ? CONFIG.serviceFee : 0;
+const total = subtotal + fee;
+const ref = "BTG-" + Array.from({length:5},()=>"ABCDEFGHJKLMNPQRSTUVWXYZ23456789"[Math.floor(Math.random()*32)]).join("");
+
+if(!cart.length){
+  $("#layout").style.display="none";
+  $("#empty").style.display="block";
+}else{
+  $("#lines").innerHTML = cart.map(x=>`
+    <div class="row"><div>${esc(x.name)}<small>Quantité : ${x.qty}</small></div><b>${money(x.price*x.qty)}</b></div>`).join("");
+  $("#sub").textContent = money(subtotal);
+  $("#fee").textContent = money(fee);
+  $("#total").textContent = money(total);
+  $("#ref").textContent = ref;
+}
+function esc(s){ return s.replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c])); }
+
+/* Mode de paiement */
+const METHODS = {
+  moncash:{label:"MonCash", app:"l'application MonCash", number:()=>CONFIG.moncashNumber, link:()=>CONFIG.moncashLink},
+  natcash:{label:"NatCash", app:"l'application NatCash", number:()=>CONFIG.natcashNumber, link:()=>CONFIG.natcashLink}
+};
+let method = null;
+
+document.querySelectorAll(".method").forEach(b=>b.addEventListener("click",()=>{
+  method = b.dataset.m;
+  document.querySelectorAll(".method").forEach(x=>x.setAttribute("aria-checked", x===b));
+  $("#f-method").style.display="none";
+  const m = METHODS[method];
+  $("#payTitle").textContent = "Payer avec " + m.label;
+  $("#appName").textContent = m.app;
+  $("#payAmount").textContent = money(total);
+  $("#payRef").textContent = ref;
+  const num = m.number();
+  $("#payNumber").textContent = num || "Numéro non renseigné";
+  const setup = $("#setupMsg");
+  setup.hidden = !!num;
+  if(!num) setup.textContent = "Ajoutez votre numéro " + m.label + " dans CONFIG pour afficher les instructions complètes.";
+  const link = $("#payLink");
+  if(m.link()){ link.href = m.link(); link.hidden = false; } else { link.hidden = true; }
+  $("#payBox").classList.add("show");
+}));
+
+/* Copier */
+document.addEventListener("click",e=>{
+  const b=e.target.closest("[data-copy]"); if(!b) return;
+  const v = {amount:String(total), number:$("#payNumber").textContent, ref:ref}[b.dataset.copy];
+  (navigator.clipboard ? navigator.clipboard.writeText(v) : Promise.reject()).then(()=>toast("Copié"),()=>toast("Copie impossible, sélectionnez le texte"));
+});
+
+/* Validation et envoi */
+function bad(id,isBad){ $(id).classList.toggle("bad",isBad); return !isBad; }
+$("#confirm").addEventListener("click",()=>{
+  const name=$("#name").value.trim(), phone=$("#phone").value.trim(), email=$("#email").value.trim(), tx=$("#tx").value.trim();
+  const digits = phone.replace(/\D/g,"");
+  const ok = [
+    bad("#f-name", name.length<2),
+    bad("#f-phone", digits.length<8),
+    bad("#f-email", email && !/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email)),
+    bad("#f-tx", tx.length<4)
+  ];
+  if(!method){ $("#f-method").style.display="block"; ok.push(false); }
+  if(ok.includes(false)){ toast("Vérifiez les champs en rouge"); const first=document.querySelector(".field.bad"); if(first) first.scrollIntoView({behavior:"smooth",block:"center"}); return; }
+  if(!CONFIG.whatsapp){ toast("Ajoutez votre numéro WhatsApp dans CONFIG pour activer l'envoi"); return; }
+
+  const lines = cart.map(x=>`• ${x.qty} × ${x.name} : ${money(x.price*x.qty)}`).join("\n");
+  const msg = `Bonjour Bigtimestream & Gaming,\nVoici ma commande ${ref} :\n\n${lines}\n\nSous-total : ${money(subtotal)}\nFrais de service : ${money(fee)}\nTotal : ${money(total)}\nPaiement : ${METHODS[method].label}\nNuméro de transaction : ${tx}\n\nNom : ${name}\nWhatsApp : ${phone}${email?`\nE-mail : ${email}`:""}`;
+  window.open(`https://wa.me/${CONFIG.whatsapp}?text=${encodeURIComponent(msg)}`,"_blank");
+  $("#layout").style.display="none";
+  $("#doneRef").textContent = ref;
+  $("#done").style.display="block";
+  window.scrollTo({top:0,behavior:"smooth"});
+});
+
+let tt; function toast(m){ const t=$("#toast"); t.textContent=m; t.classList.add("show"); clearTimeout(tt); tt=setTimeout(()=>t.classList.remove("show"),2400); }
+</script>
+</body>
+</html>

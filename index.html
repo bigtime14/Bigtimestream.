@@ -1,0 +1,522 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#090820">
+<title>Bigtimestream &amp; Gaming – Cartes cadeaux et accessoires</title>
+<meta name="description" content="Cartes cadeaux PlayStation, Xbox, Steam, Netflix, Apple, Amazon et accessoires gaming. Livraison rapide du code par message.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@500;600;700&family=Figtree:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+@property --ang{syntax:'<angle>';inherits:false;initial-value:0deg}
+:root{
+  color-scheme:dark;
+  --bg:#090820;--bg2:#12103A;--bg3:#1C1850;
+  --line:rgba(255,255,255,.12);
+  --text:#F1EFFF;--muted:#B0AADF;
+  --violet:#5B3DF5;--grape:#9333EA;--cyan:#28E0F0;--pink:#FF3DA5;--sun:#FFD84D;
+  --display:'Chakra Petch',system-ui,sans-serif;
+  --body:'Figtree',system-ui,sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:var(--body);color:var(--text);line-height:1.6;font-size:17px;-webkit-font-smoothing:antialiased;
+  background:
+    radial-gradient(900px 560px at 88% -6%,rgba(123,92,255,.38),transparent 62%),
+    radial-gradient(760px 520px at -4% 12%,rgba(40,224,240,.16),transparent 62%),
+    var(--bg);
+  background-repeat:no-repeat}
+img,svg{display:block;max-width:100%}
+button{font:inherit;color:inherit;cursor:pointer;border:0;background:none}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--cyan);outline-offset:3px;border-radius:6px}
+.wrap{width:min(1160px,92vw);margin-inline:auto}
+
+/* En-tête */
+header.top{position:sticky;top:0;z-index:20;background:rgba(9,8,32,.78);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
+.top .wrap{display:flex;align-items:center;justify-content:space-between;height:70px;gap:16px}
+.logo{font-family:var(--display);font-weight:700;font-size:1.2rem;text-decoration:none;display:flex;align-items:center;gap:10px}
+.logo i{width:32px;height:32px;background:linear-gradient(135deg,#5B3DF5,#9333EA);display:grid;place-items:center;color:#fff;font-style:normal;font-weight:700;clip-path:polygon(0 0,70% 0,100% 30%,100% 100%,30% 100%,0 70%)}
+.logo span{color:var(--cyan)}
+nav.main{display:flex;gap:28px;font-weight:500}
+nav.main a{text-decoration:none;padding:6px 2px;border-bottom:2px solid transparent;color:var(--muted);transition:color .15s,border-color .15s}
+nav.main a:hover{color:var(--text);border-color:var(--cyan)}
+.cart-btn{display:flex;align-items:center;gap:10px;border:1px solid var(--line);background:rgba(255,255,255,.05);padding:9px 16px;border-radius:999px;font-weight:600;transition:border-color .15s,box-shadow .15s}
+.cart-btn:hover{border-color:var(--cyan);box-shadow:0 0 24px -6px rgba(40,224,240,.6)}
+.cart-btn b{background:var(--cyan);color:#06122A;min-width:24px;height:24px;border-radius:12px;display:grid;place-items:center;font-size:.85rem;padding:0 6px}
+
+/* Hero */
+.hero{position:relative;padding:76px 0 96px}
+.hero::before{content:"";position:absolute;inset:0;pointer-events:none;
+  background-image:linear-gradient(rgba(255,255,255,.055) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.055) 1px,transparent 1px);
+  background-size:56px 56px;
+  -webkit-mask-image:linear-gradient(to bottom,#000 25%,transparent 92%);mask-image:linear-gradient(to bottom,#000 25%,transparent 92%)}
+.hero .wrap{position:relative;display:grid;grid-template-columns:1.05fr 1fr;gap:56px;align-items:center}
+h1{font-family:var(--display);font-weight:700;font-size:clamp(2.4rem,5vw,4.2rem);line-height:1.05;letter-spacing:-.01em;text-shadow:0 0 48px rgba(123,92,255,.6)}
+.hero p.lead{margin-top:22px;font-size:1.15rem;max-width:30em;color:var(--muted)}
+.hero .cta-row{margin-top:32px;display:flex;gap:14px;flex-wrap:wrap}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:14px 26px;border-radius:999px;font-weight:600;text-decoration:none;transition:transform .15s,box-shadow .2s,background .2s,border-color .2s}
+.btn:active{transform:scale(.97)}
+.btn-primary{background:linear-gradient(135deg,#5B3DF5,#9333EA);color:#fff}
+.btn-primary:hover{box-shadow:0 0 32px -4px rgba(147,51,234,.9)}
+.btn-ghost{border:1.5px solid rgba(255,255,255,.35)}
+.btn-ghost:hover{border-color:var(--cyan);box-shadow:0 0 24px -6px rgba(40,224,240,.6)}
+.trust{margin-top:36px;display:flex;gap:26px;flex-wrap:wrap;font-size:.95rem;color:var(--muted)}
+.trust span{display:flex;align-items:center;gap:8px}
+.trust svg{width:18px;height:18px;color:var(--cyan)}
+
+/* Composeur de carte : l'élément lumineux de la page */
+.builder{position:relative;border:2px solid transparent;border-radius:26px;padding:24px;
+  background:linear-gradient(var(--bg2),var(--bg2)) padding-box,conic-gradient(from var(--ang,0deg),#28E0F0,#5B3DF5,#FF3DA5,#28E0F0) border-box;
+  box-shadow:0 0 70px -10px rgba(123,92,255,.55),0 0 140px -30px rgba(40,224,240,.35);
+  animation:spin 8s linear infinite}
+@keyframes spin{to{--ang:360deg}}
+.builder h2{font-family:var(--display);font-size:1.2rem;margin-bottom:14px}
+.brand-tabs{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:20px}
+.tab{padding:8px 16px;border-radius:999px;border:1px solid var(--line);background:rgba(255,255,255,.03);font-weight:500;font-size:.95rem;transition:all .15s}
+.tab:hover{border-color:var(--cyan)}
+.tab[aria-pressed="true"]{background:var(--cyan);border-color:var(--cyan);color:#06122A;font-weight:600}
+.gcard{position:relative;aspect-ratio:1.62;padding:22px 24px;display:flex;flex-direction:column;justify-content:space-between;overflow:hidden;isolation:isolate;
+  clip-path:polygon(0 0,calc(100% - 26px) 0,100% 26px,100% 100%,26px 100%,0 calc(100% - 26px));
+  transition:transform .35s cubic-bezier(.2,.8,.2,1),background .3s,color .3s}
+.gcard::after{content:"";position:absolute;right:-60px;top:-60px;width:220px;height:220px;border-radius:50%;background:rgba(255,255,255,.16);z-index:-1}
+.gcard::before{content:"";position:absolute;right:30px;bottom:-90px;width:200px;height:200px;border-radius:50%;background:rgba(255,255,255,.1);z-index:-1}
+.gcard .brand{font-family:var(--display);font-weight:700;font-size:1.5rem}
+.gcard .meta{display:flex;justify-content:space-between;align-items:flex-end}
+.gcard .amt{font-family:var(--display);font-weight:700;font-size:2.7rem;line-height:1}
+.gcard .by{font-size:.75rem;opacity:.85;text-align:right;line-height:1.3}
+.builder .gcard.bump{transform:rotate(-2.5deg) scale(1.02)}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin:20px 0}
+.chip{padding:9px 18px;border-radius:10px;border:1px solid var(--line);background:rgba(255,255,255,.03);font-weight:600;transition:all .15s}
+.chip:hover{border-color:var(--cyan)}
+.chip[aria-pressed="true"]{background:var(--cyan);border-color:var(--cyan);color:#06122A}
+.builder .buy{display:flex;align-items:center;justify-content:space-between;gap:12px}
+.builder .price{font-family:var(--display);font-weight:700;font-size:1.9rem}
+
+/* Sections */
+section{padding:84px 0}
+.sec-head{display:flex;justify-content:space-between;align-items:end;gap:24px;flex-wrap:wrap;margin-bottom:36px}
+h2.sec{font-family:var(--display);font-weight:700;font-size:clamp(1.9rem,3.6vw,2.7rem);line-height:1.08}
+.sec-head p{max-width:34em;color:var(--muted);margin-top:8px}
+.filters{display:flex;gap:8px;flex-wrap:wrap}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:22px}
+.tile{background:var(--bg2);border:1px solid var(--line);border-radius:20px;padding:16px;display:flex;flex-direction:column;gap:14px;transition:border-color .2s,box-shadow .2s}
+.tile:hover{border-color:rgba(40,224,240,.55);box-shadow:0 14px 44px -18px rgba(40,224,240,.5)}
+.tile .gcard{padding:16px 18px;clip-path:polygon(0 0,calc(100% - 16px) 0,100% 16px,100% 100%,16px 100%,0 calc(100% - 16px))}
+.tile .gcard .brand{font-size:1.1rem}
+.tile .gcard .amt{font-size:1.8rem}
+.tile h3{font-family:var(--display);font-size:1.1rem}
+.tile .chips{margin:0;gap:6px}
+.tile .chip{padding:6px 12px;font-size:.9rem}
+.tile .row{display:flex;justify-content:space-between;align-items:center;margin-top:auto}
+.tile .price{font-family:var(--display);font-weight:700;font-size:1.15rem}
+.add{background:linear-gradient(135deg,#5B3DF5,#9333EA);color:#fff;padding:9px 18px;border-radius:999px;font-weight:600;font-size:.95rem;transition:box-shadow .2s}
+.add:hover{box-shadow:0 0 24px -4px rgba(147,51,234,.9)}
+
+/* Accessoires */
+.shop{background:linear-gradient(180deg,rgba(255,255,255,.04),rgba(255,255,255,.01));border-block:1px solid var(--line)}
+.item-art{aspect-ratio:1.25;border-radius:14px;display:grid;place-items:center;border:1px solid var(--line);
+  background:radial-gradient(circle at 50% 42%,rgba(123,92,255,.4),rgba(255,255,255,.02) 70%)}
+.item-art svg{width:64px;height:64px;color:var(--cyan);filter:drop-shadow(0 0 10px rgba(40,224,240,.75))}
+.tile small{color:var(--muted)}
+
+/* Étapes */
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;counter-reset:s}
+.step{background:var(--bg2);border:1px solid var(--line);border-radius:20px;padding:28px}
+.step::before{counter-increment:s;content:counter(s);display:grid;place-items:center;width:42px;height:42px;border-radius:50%;border:1.5px solid var(--cyan);color:var(--cyan);font-family:var(--display);font-weight:700;margin-bottom:16px}
+.step h3{font-family:var(--display);font-size:1.25rem;margin-bottom:6px}
+.step p{color:var(--muted)}
+
+/* Contact */
+.contact{background:radial-gradient(520px 320px at 92% 0%,rgba(255,61,165,.45),transparent 70%),linear-gradient(120deg,#3A22C4,#6A2BC9);border:1px solid rgba(255,255,255,.18);border-radius:28px;padding:56px;display:grid;grid-template-columns:1.2fr 1fr;gap:32px;align-items:center}
+.contact h2{font-family:var(--display);font-weight:700;font-size:clamp(1.8rem,3.4vw,2.5rem);line-height:1.1}
+.contact p{margin-top:12px;color:#E8E3FF;max-width:28em}
+.contact .btn-primary{background:#fff;color:#1B1647}
+.contact .btn-primary:hover{background:var(--cyan);box-shadow:0 0 30px -4px rgba(40,224,240,.8)}
+.contact .btn-ghost{border-color:rgba(255,255,255,.7)}
+
+footer{padding:48px 0 60px;color:var(--muted);font-size:.95rem;border-top:1px solid var(--line)}
+footer .wrap{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}
+footer strong{color:var(--text)}
+footer small{display:block;max-width:44em;margin-top:6px}
+
+/* Panier */
+.scrim{position:fixed;inset:0;background:rgba(3,2,14,.7);opacity:0;pointer-events:none;transition:opacity .25s;z-index:30}
+.scrim.open{opacity:1;pointer-events:auto}
+.drawer{position:fixed;top:0;right:0;height:100%;width:min(420px,100%);background:var(--bg2);border-left:1px solid var(--line);z-index:40;transform:translateX(100%);transition:transform .3s cubic-bezier(.2,.8,.2,1);display:flex;flex-direction:column}
+.drawer.open{transform:none}
+.drawer header{display:flex;justify-content:space-between;align-items:center;padding:20px 24px;border-bottom:1px solid var(--line)}
+.drawer h2{font-family:var(--display);font-size:1.3rem}
+.close{width:38px;height:38px;border-radius:50%;border:1px solid var(--line);font-size:1.1rem}
+.close:hover{border-color:var(--cyan)}
+.items{flex:1;overflow:auto;padding:12px 24px}
+.empty{padding:40px 0;text-align:center;color:var(--muted)}
+.line{display:grid;grid-template-columns:1fr auto;gap:4px 12px;padding:16px 0;border-bottom:1px solid var(--line)}
+.line strong{font-family:var(--display)}
+.qty{display:flex;align-items:center;gap:10px;grid-column:1/-1}
+.qty button{width:30px;height:30px;border-radius:50%;border:1px solid var(--line);font-weight:700}
+.qty button:hover{border-color:var(--cyan)}
+.qty .rm{margin-left:auto;width:auto;border:0;text-decoration:underline;color:var(--muted);font-weight:500;font-size:.9rem}
+.foot{padding:20px 24px 26px;border-top:1px solid var(--line);display:grid;gap:14px}
+.sub{display:flex;justify-content:space-between;font-size:.95rem;color:var(--muted);margin-bottom:-6px}
+.total{display:flex;justify-content:space-between;font-family:var(--display);font-weight:700;font-size:1.45rem}
+.foot input{width:100%;padding:12px 14px;border:1px solid var(--line);border-radius:12px;font:inherit;background:rgba(255,255,255,.06);color:var(--text)}
+.foot input::placeholder{color:#8F89C6}
+.foot input:focus{border-color:var(--cyan);outline:none;box-shadow:0 0 0 3px rgba(40,224,240,.2)}
+.foot label{font-size:.9rem;font-weight:600}
+.foot .btn{width:100%}
+.foot .btn[disabled]{opacity:.4;pointer-events:none}
+.note{font-size:.85rem;color:var(--muted)}
+.mc-box{background:rgba(40,224,240,.1);border:1px solid rgba(40,224,240,.35);border-radius:12px;padding:14px 16px;font-size:.95rem}
+.mc-box[hidden]{display:none}
+.mc-box strong{font-family:var(--display);font-size:1.15rem;display:block;margin:2px 0}
+
+.toast{position:fixed;left:50%;bottom:26px;transform:translate(-50%,20px);background:var(--text);color:#090820;padding:12px 22px;border-radius:999px;opacity:0;transition:all .25s;z-index:50;pointer-events:none;font-weight:600}
+.toast.show{opacity:1;transform:translate(-50%,0)}
+
+@media (max-width:900px){
+  .hero .wrap,.contact{grid-template-columns:1fr}
+  .steps{grid-template-columns:1fr}
+  nav.main{display:none}
+  .contact{padding:34px 26px}
+  section{padding:56px 0}
+  .hero{padding:48px 0 64px}
+}
+@media (prefers-reduced-motion:reduce){
+  *{transition:none!important;scroll-behavior:auto!important}
+  .builder{animation:none}
+}
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="wrap">
+    <a class="logo" href="#top"><i>B</i>Bigtimestream <span>&amp; Gaming</span></a>
+    <nav class="main" aria-label="Navigation principale">
+      <a href="#cartes">Cartes cadeaux</a>
+      <a href="#boutique">Accessoires</a>
+      <a href="#commande">Comment commander</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <button class="cart-btn" id="openCart" aria-label="Ouvrir le panier">Panier <b id="count">0</b></button>
+  </div>
+</header>
+
+<main id="top">
+<section class="hero">
+  <div class="wrap">
+    <div>
+      <h1>Vos cartes cadeaux, livrées en quelques minutes.</h1>
+      <p class="lead">PlayStation, Xbox, Steam, Netflix, Apple, Amazon et plus encore. Choisissez le montant, payez, recevez votre code par message.</p>
+      <div class="cta-row">
+        <a class="btn btn-primary" href="#cartes">Voir les cartes cadeaux</a>
+        <a class="btn btn-ghost" href="#boutique">Voir les accessoires</a>
+      </div>
+      <div class="trust">
+        <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2 4 14h7l-1 8 9-12h-7z"/></svg>Livraison rapide</span>
+        <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3 4 6v6c0 5 3.5 8 8 9 4.5-1 8-4 8-9V6z"/><path d="m9 12 2 2 4-4"/></svg>Codes authentiques</span>
+        <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12a8 8 0 0 1-11.6 7.1L3 21l1.9-6.4A8 8 0 1 1 21 12z"/></svg>Support par message</span>
+      </div>
+    </div>
+
+    <div class="builder" aria-label="Composer une carte cadeau">
+      <h2>Composez votre carte</h2>
+      <div class="brand-tabs" id="heroTabs" role="group" aria-label="Choisir une marque"></div>
+      <div class="gcard" id="heroCard" aria-live="polite"></div>
+      <div class="chips" id="heroChips" role="group" aria-label="Choisir un montant"></div>
+      <div class="buy">
+        <div class="price" id="heroPrice"></div>
+        <button class="btn btn-primary" id="heroAdd">Ajouter au panier</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="cartes">
+  <div class="wrap">
+    <div class="sec-head">
+      <div>
+        <h2 class="sec">Toutes les cartes cadeaux</h2>
+        <p>Le code arrive par message après confirmation du paiement. Des frais de service de 3 $ s'ajoutent à chaque commande.</p>
+      </div>
+      <div class="filters" id="filters" role="group" aria-label="Filtrer par catégorie"></div>
+    </div>
+    <div class="grid" id="giftGrid"></div>
+  </div>
+</section>
+
+<section class="shop" id="boutique">
+  <div class="wrap">
+    <div class="sec-head">
+      <div>
+        <h2 class="sec">Accessoires et électronique</h2>
+        <p>Une sélection pour jouer, écouter et recharger sans interruption.</p>
+      </div>
+    </div>
+    <div class="grid" id="itemGrid"></div>
+  </div>
+</section>
+
+<section id="commande">
+  <div class="wrap">
+    <div class="sec-head">
+      <h2 class="sec">Commander en trois étapes</h2>
+    </div>
+    <div class="steps">
+      <div class="step"><h3>Choisissez</h3><p>Ajoutez vos cartes cadeaux et accessoires au panier.</p></div>
+      <div class="step"><h3>Confirmez</h3><p>Envoyez votre commande par message et réglez le montant indiqué.</p></div>
+      <div class="step"><h3>Recevez</h3><p>Le code de votre carte arrive par message dès le paiement confirmé.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="contact" style="padding-top:0">
+  <div class="wrap">
+    <div class="contact">
+      <div>
+        <h2>Une question avant d'acheter&nbsp;?</h2>
+        <p>Une carte qui n'est pas dans la liste, un montant précis, une commande en gros&nbsp;: écrivez-nous.</p>
+      </div>
+      <div style="display:flex;gap:12px;flex-wrap:wrap">
+        <a class="btn btn-primary" id="waLink" href="#">Écrire sur WhatsApp</a>
+        <a class="btn btn-ghost" id="mailLink" href="#">Envoyer un e-mail</a>
+      </div>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div>
+      <strong style="font-family:var(--display)">Bigtimestream &amp; Gaming</strong>
+      <small>Les marques citées appartiennent à leurs propriétaires respectifs. Bigtimestream &amp; Gaming n'est affilié à aucune d'entre elles.</small>
+    </div>
+    <div>© <span id="yr"></span> Bigtimestream &amp; Gaming</div>
+  </div>
+</footer>
+
+<div class="scrim" id="scrim"></div>
+<aside class="drawer" id="drawer" aria-label="Panier" aria-hidden="true">
+  <header>
+    <h2>Votre panier</h2>
+    <button class="close" id="closeCart" aria-label="Fermer le panier">✕</button>
+  </header>
+  <div class="items" id="items"></div>
+  <div class="foot">
+    <div class="sub"><span>Sous-total</span><span id="sub">0 $</span></div>
+    <div class="sub"><span>Frais de service</span><span id="fee">0 $</span></div>
+    <div class="total"><span>Total</span><span id="total">0 $</span></div>
+    <div>
+      <label for="custName">Votre nom</label>
+      <input id="custName" type="text" autocomplete="name" placeholder="Prénom et nom">
+    </div>
+    <button class="btn btn-primary" id="moncash" disabled>Passer au paiement</button>
+    <div class="mc-box" id="mcBox" hidden></div>
+    <button class="btn btn-ghost" id="checkout" disabled>Envoyer la commande sur WhatsApp</button>
+    <p class="note">Après le paiement, envoyez la commande sur WhatsApp avec la preuve de paiement. Le code de votre carte vous est envoyé dès confirmation.</p>
+  </div>
+</aside>
+<div class="toast" id="toast" role="status"></div>
+
+<script>
+/* ===== À MODIFIER ===== */
+const CONFIG = {
+  whatsapp: "50944089302",            // Votre numéro avec indicatif, sans + ni espaces. Ex : "15145551234"
+  email: "",               // Votre adresse e-mail
+  moncashNumber: "44089302",       // Votre numéro MonCash (celui qui reçoit l'argent)
+  moncashLink: "",         // Lien de paiement MonCash si vous en avez un (facultatif)
+  serviceFee: 3,           // Frais de service ajoutés à chaque commande
+  currency: "$"            // Devise affichée
+};
+
+const GIFT_CARDS = [
+  {id:"ps",   name:"PlayStation", cat:"Jeux",      bg:"#1F3FBF", fg:"#FFFFFF", amounts:[10,25,50,100]},
+  {id:"xbox", name:"Xbox",        cat:"Jeux",      bg:"#0E8A3E", fg:"#FFFFFF", amounts:[10,25,50,100]},
+  {id:"steam",name:"Steam",       cat:"Jeux",      bg:"#27406B", fg:"#FFFFFF", amounts:[10,20,50,100]},
+  {id:"nflx", name:"Netflix",     cat:"Streaming", bg:"#E5372F", fg:"#FFFFFF", amounts:[15,25,50,100]},
+  {id:"spot", name:"Spotify",     cat:"Streaming", bg:"#1ED760", fg:"#0B2A17", amounts:[10,30,60]},
+  {id:"apple",name:"Apple",       cat:"Boutiques", bg:"#ECE9FA", fg:"#1B1647", amounts:[10,25,50,100]},
+  {id:"amzn", name:"Amazon",      cat:"Boutiques", bg:"#FFB020", fg:"#2B1B00", amounts:[10,25,50,100]},
+  {id:"gplay",name:"Google Play", cat:"Boutiques", bg:"#12A59A", fg:"#FFFFFF", amounts:[10,25,50,100]}
+];
+
+/* Prix d'exemple : remplacez par vos vrais articles et tarifs */
+const ICONS = {
+  pad:'<path d="M6 9h12a4 4 0 0 1 4 4v1a3 3 0 0 1-5.2 2L15 14H9l-1.8 2A3 3 0 0 1 2 14v-1a4 4 0 0 1 4-4z"/><path d="M7 11.5v2M6 12.5h2M16 12h.01M18 13.5h.01"/>',
+  head:'<path d="M4 15v-3a8 8 0 0 1 16 0v3"/><rect x="3" y="14" width="4" height="6" rx="1.5"/><rect x="17" y="14" width="4" height="6" rx="1.5"/>',
+  buds:'<path d="M8 4a3 3 0 0 0-3 3v4a3 3 0 0 0 3 3V4zM16 4a3 3 0 0 1 3 3v4a3 3 0 0 1-3 3V4z"/><path d="M8 14v5M16 14v5"/>',
+  key:'<rect x="2" y="6" width="20" height="12" rx="2"/><path d="M6 10h.01M10 10h.01M14 10h.01M18 10h.01M7 14h10"/>',
+  bolt:'<rect x="6" y="3" width="12" height="18" rx="2"/><path d="m12 8-2 4h4l-2 4"/>',
+  mouse:'<rect x="6" y="3" width="12" height="18" rx="6"/><path d="M12 7v4"/>'
+};
+const ITEMS = [
+  {id:"i1", name:"Manette sans fil",        desc:"Compatible console et PC", price:59, icon:"pad"},
+  {id:"i2", name:"Casque gaming",           desc:"Micro antibruit intégré",  price:79, icon:"head"},
+  {id:"i3", name:"Écouteurs sans fil",      desc:"Boîtier de charge inclus", price:39, icon:"buds"},
+  {id:"i4", name:"Clavier mécanique",       desc:"Rétroéclairé",             price:69, icon:"key"},
+  {id:"i5", name:"Souris gaming",           desc:"Capteur haute précision",  price:35, icon:"mouse"},
+  {id:"i6", name:"Chargeur rapide 65 W",    desc:"Téléphone et portable",    price:29, icon:"bolt"}
+];
+
+/* ===== Application ===== */
+const $ = s => document.querySelector(s);
+const money = n => n + " " + CONFIG.currency;
+let cart = [];
+let hero = {brand:GIFT_CARDS[0], amount:GIFT_CARDS[0].amounts[1]};
+let filter = "Tout";
+
+function cardHTML(b, amt){
+  return `<div class="brand">${b.name}</div>
+          <div class="meta"><div class="amt">${amt}${CONFIG.currency}</div><div class="by">Carte cadeau<br>Bigtimestream &amp; Gaming</div></div>`;
+}
+function paint(el,b){ el.style.background=b.bg; el.style.color=b.fg; }
+
+/* Hero builder */
+function renderHero(bump){
+  const tabs = $("#heroTabs");
+  tabs.innerHTML = GIFT_CARDS.map(b=>`<button class="tab" data-b="${b.id}" aria-pressed="${b.id===hero.brand.id}">${b.name}</button>`).join("");
+  const card = $("#heroCard");
+  card.innerHTML = cardHTML(hero.brand, hero.amount);
+  paint(card, hero.brand);
+  $("#heroChips").innerHTML = hero.brand.amounts.map(a=>`<button class="chip" data-a="${a}" aria-pressed="${a===hero.amount}">${money(a)}</button>`).join("");
+  $("#heroPrice").textContent = money(hero.amount);
+  if(bump){ card.classList.add("bump"); setTimeout(()=>card.classList.remove("bump"),260); }
+}
+$("#heroTabs").addEventListener("click",e=>{
+  const t=e.target.closest("[data-b]"); if(!t) return;
+  hero.brand = GIFT_CARDS.find(b=>b.id===t.dataset.b);
+  if(!hero.brand.amounts.includes(hero.amount)) hero.amount = hero.brand.amounts[Math.min(1,hero.brand.amounts.length-1)];
+  renderHero(true);
+});
+$("#heroChips").addEventListener("click",e=>{
+  const c=e.target.closest("[data-a]"); if(!c) return;
+  hero.amount = +c.dataset.a; renderHero(true);
+});
+$("#heroAdd").addEventListener("click",()=>addToCart({key:hero.brand.id+"-"+hero.amount, name:`Carte ${hero.brand.name} ${hero.amount}${CONFIG.currency}`, price:hero.amount}));
+
+/* Catalogue cartes */
+const sel = {}; GIFT_CARDS.forEach(b=>sel[b.id]=b.amounts[Math.min(1,b.amounts.length-1)]);
+function renderFilters(){
+  const cats = ["Tout", ...new Set(GIFT_CARDS.map(b=>b.cat))];
+  $("#filters").innerHTML = cats.map(c=>`<button class="tab" data-c="${c}" aria-pressed="${c===filter}">${c}</button>`).join("");
+}
+function renderGifts(){
+  $("#giftGrid").innerHTML = GIFT_CARDS.filter(b=>filter==="Tout"||b.cat===filter).map(b=>`
+    <article class="tile" data-id="${b.id}">
+      <div class="gcard" style="background:${b.bg};color:${b.fg}">${cardHTML(b, sel[b.id])}</div>
+      <h3>Carte ${b.name}</h3>
+      <div class="chips" role="group" aria-label="Montant ${b.name}">
+        ${b.amounts.map(a=>`<button class="chip" data-a="${a}" aria-pressed="${a===sel[b.id]}">${a}</button>`).join("")}
+      </div>
+      <div class="row"><span class="price">${money(sel[b.id])}</span><button class="add" data-add>Ajouter</button></div>
+    </article>`).join("");
+}
+$("#filters").addEventListener("click",e=>{
+  const t=e.target.closest("[data-c]"); if(!t) return;
+  filter=t.dataset.c; renderFilters(); renderGifts();
+});
+$("#giftGrid").addEventListener("click",e=>{
+  const tile=e.target.closest(".tile"); if(!tile) return;
+  const b=GIFT_CARDS.find(x=>x.id===tile.dataset.id);
+  const chip=e.target.closest("[data-a]");
+  if(chip){ sel[b.id]=+chip.dataset.a; renderGifts(); return; }
+  if(e.target.closest("[data-add]")){
+    addToCart({key:b.id+"-"+sel[b.id], name:`Carte ${b.name} ${sel[b.id]}${CONFIG.currency}`, price:sel[b.id]});
+  }
+});
+
+/* Accessoires */
+$("#itemGrid").innerHTML = ITEMS.map(i=>`
+  <article class="tile">
+    <div class="item-art"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${ICONS[i.icon]}</svg></div>
+    <div><h3>${i.name}</h3><small>${i.desc}</small></div>
+    <div class="row"><span class="price">${money(i.price)}</span><button class="add" data-item="${i.id}">Ajouter</button></div>
+  </article>`).join("");
+$("#itemGrid").addEventListener("click",e=>{
+  const b=e.target.closest("[data-item]"); if(!b) return;
+  const i=ITEMS.find(x=>x.id===b.dataset.item);
+  addToCart({key:i.id, name:i.name, price:i.price});
+});
+
+/* Panier */
+function addToCart(p){
+  const f=cart.find(x=>x.key===p.key);
+  if(f) f.qty++; else cart.push({...p,qty:1});
+  renderCart(); toast(p.name+" ajouté");
+}
+function renderCart(){
+  const n = cart.reduce((s,x)=>s+x.qty,0);
+  const t = cart.reduce((s,x)=>s+x.qty*x.price,0);
+  $("#count").textContent = n;
+  const fee = n ? CONFIG.serviceFee : 0;
+  $("#sub").textContent = money(t);
+  $("#fee").textContent = money(fee);
+  $("#total").textContent = money(t + fee);
+  $("#checkout").disabled = !n;
+  $("#moncash").disabled = !n;
+  if(!n) $("#mcBox").hidden = true;
+  else if(!$("#mcBox").hidden) showMonCash();
+  $("#items").innerHTML = n ? cart.map(x=>`
+    <div class="line">
+      <strong>${x.name}</strong><span>${money(x.price*x.qty)}</span>
+      <div class="qty">
+        <button data-k="${x.key}" data-d="-1" aria-label="Retirer une unité">−</button>
+        <span>${x.qty}</span>
+        <button data-k="${x.key}" data-d="1" aria-label="Ajouter une unité">+</button>
+        <button class="rm" data-k="${x.key}" data-d="rm">Supprimer</button>
+      </div>
+    </div>`).join("") : `<p class="empty">Votre panier est vide. Ajoutez une carte cadeau pour commencer.</p>`;
+}
+$("#items").addEventListener("click",e=>{
+  const b=e.target.closest("[data-k]"); if(!b) return;
+  const x=cart.find(i=>i.key===b.dataset.k); if(!x) return;
+  if(b.dataset.d==="rm") x.qty=0; else x.qty+=+b.dataset.d;
+  cart=cart.filter(i=>i.qty>0); renderCart();
+});
+const drawer=$("#drawer"), scrim=$("#scrim");
+function openCart(o){
+  drawer.classList.toggle("open",o); scrim.classList.toggle("open",o);
+  drawer.setAttribute("aria-hidden",!o);
+  if(o) $("#closeCart").focus(); else $("#openCart").focus();
+}
+$("#openCart").onclick=()=>openCart(true);
+$("#closeCart").onclick=()=>openCart(false);
+scrim.onclick=()=>openCart(false);
+document.addEventListener("keydown",e=>{ if(e.key==="Escape") openCart(false); });
+
+function showMonCash(){
+  const total=cart.reduce((s,x)=>s+x.qty*x.price,0);
+  const box=$("#mcBox");
+  box.hidden=false;
+  box.innerHTML = CONFIG.moncashNumber
+    ? `Envoyez <strong>${money(total)}</strong> par MonCash au <strong>${CONFIG.moncashNumber}</strong>Gardez la preuve de paiement, puis envoyez votre commande sur WhatsApp.`
+    : `Ajoutez votre numéro MonCash dans CONFIG pour afficher les instructions de paiement.`;
+}
+$("#moncash").onclick=()=>{
+  const data = cart.map(x=>[x.name,x.price,x.qty]);
+  location.href = "checkout.html?c=" + encodeURIComponent(JSON.stringify(data));
+};
+
+$("#checkout").onclick=()=>{
+  if(!CONFIG.whatsapp){ toast("Ajoutez votre numéro WhatsApp dans CONFIG pour activer la commande"); return; }
+  const name=$("#custName").value.trim();
+  const lines=cart.map(x=>`• ${x.qty} × ${x.name} : ${money(x.qty*x.price)}`).join("\n");
+  const total=cart.reduce((s,x)=>s+x.qty*x.price,0);
+  const msg=`Bonjour Bigtimestream & Gaming,\nJe souhaite passer cette commande :\n\n${lines}\n\nFrais de service : ${money(CONFIG.serviceFee)}\nTotal : ${money(total+CONFIG.serviceFee)}${name?`\nNom : ${name}`:""}`;
+  window.open(`https://wa.me/${CONFIG.whatsapp}?text=${encodeURIComponent(msg)}`,"_blank");
+};
+
+/* Contact + divers */
+$("#waLink").href = CONFIG.whatsapp ? `https://wa.me/${CONFIG.whatsapp}` : "#contact";
+$("#mailLink").href = CONFIG.email ? `mailto:${CONFIG.email}` : "#contact";
+$("#yr").textContent = new Date().getFullYear();
+let tt; function toast(m){ const t=$("#toast"); t.textContent=m; t.classList.add("show"); clearTimeout(tt); tt=setTimeout(()=>t.classList.remove("show"),2200); }
+
+renderHero(); renderFilters(); renderGifts(); renderCart();
+</script>
+</body>
+</html>
