@@ -73,7 +73,10 @@ h1{font-family:var(--display);font-weight:700;font-size:clamp(2rem,4vw,3rem);lin
 .copy{font-size:.85rem;font-weight:600;background:var(--cyan);color:#06122A;padding:6px 14px;border-radius:999px;flex-shrink:0;transition:box-shadow .2s}
 .copy:hover{box-shadow:0 0 18px -2px rgba(40,224,240,.8)}
 .setup{background:rgba(255,216,77,.12);border:1px solid rgba(255,216,77,.4);color:#FFE58A;border-radius:12px;padding:12px 14px;font-size:.92rem;margin-top:12px}
-.setup[hidden],#payLink[hidden]{display:none}
+.setup[hidden],#payLink[hidden],.qr[hidden]{display:none}
+.qr{margin-top:14px;text-align:center}
+.qr img{width:min(260px,100%);height:auto;border-radius:14px;background:#fff;padding:8px;display:inline-block}
+.qr p{font-size:.9rem;color:var(--muted);margin-top:8px}
 
 .btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:15px 26px;border-radius:999px;font-weight:600;text-decoration:none;width:100%;transition:transform .15s,box-shadow .2s,border-color .2s}
 .btn:active{transform:scale(.98)}
@@ -185,6 +188,10 @@ h1{font-family:var(--display);font-weight:700;font-size:clamp(2rem,4vw,3rem);lin
           <div class="kv"><div><span>Montant à envoyer</span><br><strong id="payAmount"></strong></div><button type="button" class="copy" data-copy="amount">Copier</button></div>
           <div class="kv"><div><span>Numéro du destinataire</span><br><strong id="payNumber"></strong></div><button type="button" class="copy" data-copy="number">Copier</button></div>
           <div class="kv"><div><span>Référence</span><br><strong id="payRef"></strong></div><button type="button" class="copy" data-copy="ref">Copier</button></div>
+          <div class="qr" id="payQr" hidden>
+            <img id="qrImg" alt="QR code MonCash à scanner pour payer" width="260" loading="lazy">
+            <p>Scannez ce code avec l'application MonCash, puis envoyez le montant indiqué.</p>
+          </div>
           <div class="setup" id="setupMsg" hidden></div>
           <a class="btn btn-ghost" id="payLink" href="#" target="_blank" rel="noopener" hidden>Ouvrir le lien de paiement</a>
         </div>
@@ -225,6 +232,7 @@ const CONFIG = {
   natcashNumber: "40313942",    // Numéro NatCash qui reçoit l'argent
   moncashLink: "",      // Lien de paiement MonCash (facultatif)
   natcashLink: "",      // Lien de paiement NatCash (facultatif)
+  moncashQr: "moncash-qr.jpg",   // Image du QR code MonCash (laisser vide pour le masquer)
   serviceFee: 3,        // Frais de service ajoutés à chaque commande (même valeur que dans index.html)
   currency: "$"         // Devise affichée. Ex : "HTG"
 };
@@ -282,6 +290,8 @@ document.querySelectorAll(".method").forEach(b=>b.addEventListener("click",()=>{
   if(!num) setup.textContent = "Ajoutez votre numéro " + m.label + " dans CONFIG pour afficher les instructions complètes.";
   const link = $("#payLink");
   if(m.link()){ link.href = m.link(); link.hidden = false; } else { link.hidden = true; }
+  const qr=$("#payQr");
+  if(method==="moncash" && CONFIG.moncashQr){ $("#qrImg").src=CONFIG.moncashQr; qr.hidden=false; } else { qr.hidden=true; }
   $("#payBox").classList.add("show");
 }));
 
